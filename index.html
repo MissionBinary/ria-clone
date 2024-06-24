@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ria Money Transfer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo"><img src="https://www.riamoneytransfer.com/_next/static/media/ria-logo.e678bf28.svg" alt="Ria Money Transfer"></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Track a transfer</a></li>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </nav>
+            <div class="dropdowns">
+                <div class="country-dropdown">
+                    <button class="dropbtn"><img src="https://www.riamoneytransfer.com/_next/static/media/US.852fde5e.svg" alt="US Flag"></button>
+                    <div class="dropdown-content">
+                        <a href="#"><img src="https://www.riamoneytransfer.com/_next/static/media/AU.b2e7e8d4.svg" alt="Australia Flag"> Australia</a>
+                        <a href="#"><img src="https://www.riamoneytransfer.com/_next/static/media/BE.c7a2df2f.svg" alt="Belgium Flag"> Belgium</a>
+                        <a href="#"><img src="https://www.riamoneytransfer.com/_next/static/media/CA.7a371194.svg" alt="Canada Flag"> Canada</a>
+                    </div>
+                </div>
+                <div class="language-dropdown">
+                    <button class="dropbtn">English</button>
+                    <div class="dropdown-content">
+                        <a href="#">Tiếng Việt</a>
+                        <a href="#">Español</a>
+                    </div>
+                </div>
+                <a href="#" class="login-btn">Log in</a>
+                <a href="#" class="register-btn">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="track-transfer">
+            <h1>Track a transfer</h1>
+            <p>Find the status of any transfer by entering your PIN or order number</p>
+            <form id="trackForm">
+                <input type="text" id="pinInput" placeholder="PIN or order number">
+                <button type="submit" id="trackButton" disabled>Track transfer</button>
+            </form>
+            <a href="#" class="pin-help">Where's my PIN and order number?</a>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('pinInput').addEventListener('input', function() {
+            var pin = document.getElementById('pinInput').value;
+            var trackButton = document.getElementById('trackButton');
+            if (pin === 'US4947395927') {
+                trackButton.disabled = false;
+                trackButton.style.backgroundColor = '#ff6600';
+                trackButton.style.color = '#ffffff';
+                trackButton.style.cursor = 'pointer';
+            } else {
+                trackButton.disabled = true;
+                trackButton.style.backgroundColor = '#ccc';
+                trackButton.style.color = '#000000';
+                trackButton.style.cursor = 'not-allowed';
+            }
+        });
+
+        document.getElementById('trackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var pin = document.getElementById('pinInput').value;
+            if (pin === 'US4947395927') {
+                window.location.href = 'order-tracking-page.html';  // Replace with actual tracking page URL
+            } else {
+                alert('Invalid PIN or order number. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
